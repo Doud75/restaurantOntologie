@@ -62,20 +62,20 @@ const SparqlQueryComponent: React.FC<SparqlQueryComponentProps> = ({ files }) =>
 
     return (
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-            <h1 style={{ textAlign: "center", color: "#2c3e50" }}>SPARQL Query Interface</h1>
+            <h1 style={{color: "#2c3e50" }}>SPARQL Query Interface</h1>
 
+            <label htmlFor="sparqlQuery" style={{ fontSize: "16px", fontWeight: "bold", color: "#34495e" }}>
+                Enter your SPARQL query:
+            </label>
             <div style={{ marginBottom: "20px" }}>
-                <label htmlFor="sparqlQuery" style={{ fontSize: "16px", fontWeight: "bold", color: "#34495e" }}>
-                    Enter your SPARQL query:
-                </label>
                 <textarea
                     id="sparqlQuery"
                     value={sparqlQuery}
                     onChange={(e) => setSparqlQuery(e.target.value)}
                     placeholder="Enter your SPARQL query here"
-                    rows={8}
+                    rows={10}
                     style={{
-                        width: "100%",
+                        width: "70%",
                         padding: "10px",
                         fontSize: "14px",
                         border: "1px solid #ccc",
@@ -87,7 +87,7 @@ const SparqlQueryComponent: React.FC<SparqlQueryComponentProps> = ({ files }) =>
                 />
             </div>
 
-            <div style={{textAlign: "center", marginBottom: "20px"}}>
+            <div style={{marginBottom: "20px"}}>
                 <button
                     onClick={executeQuery}
                     style={{
@@ -125,7 +125,7 @@ const SparqlQueryComponent: React.FC<SparqlQueryComponentProps> = ({ files }) =>
             )}
 
             {results.length > 0 && (
-                <div style={{marginTop: "20px", backgroundColor: "#ecf0f1", padding: "20px", borderRadius: "4px"}}>
+                <div style={{marginTop: "20px", backgroundColor: "#ecf0f1", padding: "20px", borderRadius: "4px", width:"70%",}}>
                     <h2 style={{color: "#2c3e50" }}>Results</h2>
                     <pre style={{
                         backgroundColor: "#ffffff",
