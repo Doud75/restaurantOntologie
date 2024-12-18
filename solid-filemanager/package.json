@@ -1,0 +1,84 @@
+{
+  "name": "solid-filemanager",
+  "version": "1.2.1",
+  "private": false,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "test:e2e": "npm run start-wait && cypress run",
+    "precss": "node delete_css_storage.js",
+    "css": "community-solid-server -p 8080 -c @css:config/file-no-setup.json -f ./community-solid-server",
+    "start-wait": "npm run start-wait:frontend && npm run start-wait:css",
+    "start-wait:frontend": "npm run start & wait-on http://localhost:3000",
+    "start-wait:css": "npm run css & wait-on http://localhost:8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otto-aa/solid-filemanager.git"
+  },
+  "keywords": [
+    "filemanager",
+    "solid"
+  ],
+  "author": "A_A",
+  "bugs": {
+    "url": "https://github.com/otto-aa/solid-filemanager/issues"
+  },
+  "homepage": ".",
+  "dependencies": {
+    "@comunica/actor-init-sparql": "^1.22.3",
+    "@comunica/query-sparql": "^4.0.2",
+    "@inrupt/solid-client-authn-browser": "^1.11.7",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@rdfjs/parser-jsonld": "^2.1.2",
+    "@rdfjs/parser-n3": "^2.0.2",
+    "@types/classnames": "^2.2.10",
+    "@types/history": "^4.7.5",
+    "@types/jest": "^24.9.1",
+    "@types/jszip": "^3.1.7",
+    "@types/material-ui": "^0.21.12",
+    "@types/mime": "^2.0.1",
+    "@types/node": "^11.15.12",
+    "@types/rdflib": "^0.17.1",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "@types/react-plyr": "^2.1.0",
+    "@types/react-redux": "^7.1.7",
+    "gh-pages": "^3.2.3",
+    "history": "^4.10.1",
+    "jszip": "^3.4.0",
+    "mime": "^2.4.4",
+    "plyr": "^3.5.10",
+    "rdflib": "^2.2.35",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-plyr": "^2.2.0",
+    "react-redux": "^6.0.1",
+    "react-scripts": "^5.0.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "~2.3.0",
+    "solid-file-client": "^2.1.3",
+    "typeface-roboto": "0.0.54",
+    "typescript": "^3.8.3",
+    "url": "^0.11.4"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@inrupt/solid-client-authn-core": "^1.11.7",
+    "@solid/community-server": "^4.0.0",
+    "cypress": "^9.6.0",
+    "uuid": "^8.3.2",
+    "wait-on": "^6.0.1"
+  }
+}
