@@ -61,21 +61,83 @@ const SparqlQueryComponent: React.FC<SparqlQueryComponentProps> = ({ files }) =>
     };
 
     return (
-        <div>
-            <h1>SPARQL Query Interface</h1>
-            <textarea
-                value={sparqlQuery}
-                onChange={(e) => setSparqlQuery(e.target.value)}
-                placeholder="Enter your SPARQL query here"
-                rows={6}
-                style={{ width: "100%" }}
-            ></textarea>
-            <button onClick={executeQuery}>Run Query</button>
-            {error && <p style={{ color: "red" }}>Error: {error}</p>}
+        <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+            <h1 style={{ textAlign: "center", color: "#2c3e50" }}>SPARQL Query Interface</h1>
+
+            <div style={{ marginBottom: "20px" }}>
+                <label htmlFor="sparqlQuery" style={{ fontSize: "16px", fontWeight: "bold", color: "#34495e" }}>
+                    Enter your SPARQL query:
+                </label>
+                <textarea
+                    id="sparqlQuery"
+                    value={sparqlQuery}
+                    onChange={(e) => setSparqlQuery(e.target.value)}
+                    placeholder="Enter your SPARQL query here"
+                    rows={8}
+                    style={{
+                        width: "100%",
+                        padding: "10px",
+                        fontSize: "14px",
+                        border: "1px solid #ccc",
+                        borderRadius: "4px",
+                        boxSizing: "border-box",
+                        fontFamily: "Courier, monospace",
+                        backgroundColor: "#f4f4f4",
+                    }}
+                />
+            </div>
+
+            <div style={{textAlign: "center", marginBottom: "20px"}}>
+                <button
+                    onClick={executeQuery}
+                    style={{
+                        padding: "10px 20px",
+                        fontSize: "16px",
+                        backgroundColor: "#3498db",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer",
+                        transition: "background-color 0.3s",
+                    }}
+                    onMouseOver={(e) => {
+                        (e.target as HTMLButtonElement).style.backgroundColor = "#2980b9";
+                    }}
+                    onMouseOut={(e) => {
+                        (e.target as HTMLButtonElement).style.backgroundColor = "#3498db";
+                    }}
+                >
+                    Run Query
+                </button>
+
+            </div>
+
+            {error && (
+                <p style={{
+                    color: "red",
+                    textAlign: "center",
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    marginTop: "10px",
+                }}>
+                    Error: {error}
+                </p>
+            )}
+
             {results.length > 0 && (
-                <div>
-                    <h2>Results</h2>
-                    <pre>{JSON.stringify(results, null, 2)}</pre>
+                <div style={{marginTop: "20px", backgroundColor: "#ecf0f1", padding: "20px", borderRadius: "4px"}}>
+                    <h2 style={{color: "#2c3e50" }}>Results</h2>
+                    <pre style={{
+                        backgroundColor: "#ffffff",
+                        padding: "10px",
+                        fontFamily: "Courier, monospace",
+                        borderRadius: "4px",
+                        fontSize: "14px",
+                        overflowX: "auto",
+                        wordWrap: "break-word",
+                    }}>
+                        {JSON.stringify(results, null, 2)}
+                    </pre>
                 </div>
             )}
         </div>
