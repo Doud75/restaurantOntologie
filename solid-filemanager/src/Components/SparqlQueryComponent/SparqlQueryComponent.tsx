@@ -23,7 +23,6 @@ const SparqlQueryComponent: React.FC<SparqlQueryComponentProps> = ({ files }) =>
                     const baseUrlSparql = 'http://localhost:3000/';
                     const url = `${baseUrlSparql}${file}`;
 
-                    console.log(url);
                     //@ts-ignore
                     const resultStream = await queryEngine.queryBindings(sparqlQuery, {
                         sources: [url],
