@@ -2,77 +2,117 @@
 
 ## Description de l'Ontologie
 
-Cette ontologie permet de modéliser des informations liées aux restaurants, en se basant sur des concepts issus de [schema.org](https://schema.org/). Elle inclut des informations telles que le nom du restaurant, son adresse, son évaluation, les horaires d'ouverture, les types de cuisines servies, et d'autres attributs importants pour la gestion des restaurants.
+Cette ontologie permet de modéliser des informations liées aux restaurants, en se basant sur des concepts personnalisés et inspirés de [schema.org](https://schema.org/). Elle inclut des informations telles que le nom du restaurant, son adresse, son évaluation, les horaires d'ouverture, les types de cuisines servies, et d'autres attributs essentiels pour représenter un restaurant.
 
-### Classes
+---
 
-L'ontologie comporte les classes suivantes :
+## Classes et Propriétés
 
-- **Restaurant** : Représente un restaurant.
-- **AggregateRating** : Représente une évaluation globale d'un restaurant, comme la note moyenne.
-- **PostalAddress** : Représente l'adresse d'un restaurant, incluant la rue, la localité, la région et le code postal.
-- **OpeningHoursSpecification** : Représente les horaires d'ouverture d'un restaurant.
-  
-### Propriétés
+### **Restaurant**
+Représente un restaurant.
 
-Les propriétés suivantes sont utilisées pour relier des données à ces classes :
+- **Propriétés** :
+    - **hasName** : Le nom du restaurant (type `xsd:string`).
+    - **hasRating** : L'évaluation du restaurant (type `AggregateRating`).
+    - **hasAddress** : L'adresse du restaurant (type `Address`).
+    - **hasPhone** : Le numéro de téléphone (type `xsd:string`).
+    - **hasWebsite** : L'URL du site web (type `xsd:anyURI`).
+    - **hasOpeningHours** : Les horaires d'ouverture (type `OpeningHours`).
+    - **hasCuisine** : Les types de cuisine servis (type `xsd:string`).
+    - **hasPriceRange** : La plage de prix (type `xsd:string`).
+    - **acceptsReservations** : Indique si le restaurant prend des réservations (type `xsd:boolean`).
 
-- **name** : Le nom du restaurant.
-- **aggregateRating** : L'évaluation d'un restaurant (via la classe `AggregateRating`).
-- **address** : L'adresse du restaurant (via la classe `PostalAddress`).
-- **telephone** : Le numéro de téléphone du restaurant.
-- **url** : L'URL du site web du restaurant.
-- **openingHoursSpecification** : Les horaires d'ouverture du restaurant (via la classe `OpeningHoursSpecification`).
-- **servesCuisine** : Les types de cuisine servis par le restaurant.
-- **priceRange** : La gamme de prix du restaurant.
-- **takesReservations** : Si le restaurant prend des réservations.
+### **AggregateRating**
+Représente une évaluation globale d'un restaurant.
+
+- **Propriétés** :
+    - **ratingValue** : La note moyenne (type `xsd:decimal`).
+    - **reviewCount** : Le nombre d'avis (type `xsd:integer`).
+
+### **Address**
+Représente l'adresse d'un restaurant.
+
+- **Propriétés** :
+    - **streetAddress** : La rue (type `xsd:string`).
+    - **city** : La ville (type `xsd:string`).
+    - **region** : La région (type `xsd:string`).
+    - **postalCode** : Le code postal (type `xsd:string`).
+
+### **OpeningHours**
+Représente les horaires d'ouverture d'un restaurant.
+
+- **Propriétés** :
+    - **dayOfWeek** : Les jours d'ouverture (type `xsd:string`, valeurs multiples possibles).
+    - **opens** : Heure d'ouverture (type `xsd:time`).
+    - **closes** : Heure de fermeture (type `xsd:time`).
+
+---
 
 ## Exemples de Requêtes SPARQL
 
 ### 1. Récupérer les noms et les évaluations des restaurants
 
-Cette requête récupère les noms des restaurants et leurs évaluations (ratingValue).
+Cette requête récupère les noms des restaurants et leurs notes moyennes.
 
 ```sparql
-PREFIX schema: <https://schema.org/>
+PREFIX ex: <https://example.org/ontology#>
 
 SELECT ?restaurantName ?ratingValue
 WHERE {
-  ?restaurant a schema:Restaurant ;
-             schema:name ?restaurantName ;
-             schema:aggregateRating ?rating .
-  ?rating schema:ratingValue ?ratingValue .
+  ?restaurant a ex:Restaurant ;
+              ex:hasName ?restaurantName ;
+              ex:hasRating ?rating .
+  ?rating ex:ratingValue ?ratingValue .
 }
 ```
 
-### 2. Récupérer les restaurants avec leur note moyenne (rating) et le nombre d'avis
+### 2. Récupérer les restaurants avec leur note moyenne et le nombre d'avis
 
-Cette requête récupère le nom des restaurants, leur note (ratingValue), et le nombre d'avis (reviewCount).
+Cette requête récupère les noms des restaurants, leurs notes moyennes et le nombre d'avis.
 
 ```sparql
-PREFIX schema: <https://schema.org/>
+PREFIX ex: <https://example.org/ontology#>
 
 SELECT ?restaurantName ?ratingValue ?reviewCount
 WHERE {
-  ?restaurant a schema:Restaurant ;
-              schema:name ?restaurantName ;
-              schema:aggregateRating ?rating .
-  ?rating schema:ratingValue ?ratingValue ;
-          schema:reviewCount ?reviewCount .
+  ?restaurant a ex:Restaurant ;
+              ex:hasName ?restaurantName ;
+              ex:hasRating ?rating .
+  ?rating ex:ratingValue ?ratingValue ;
+          ex:reviewCount ?reviewCount .
 }
 ```
-### 3. Récupérer les restaurants avec leur catégorie de cuisine et leur plage de prix
 
-Cette requête permet de récupérer les restaurants, leurs types de cuisine (servesCuisine), et leur plage de prix (priceRange).
+### 3. Récupérer les restaurants avec leur type de cuisine et leur gamme de prix
+
+Cette requête récupère les restaurants, leurs types de cuisine et leur gamme de prix.
 
 ```sparql
-PREFIX schema: <https://schema.org/>
+PREFIX ex: <https://example.org/ontology#>
 
 SELECT ?restaurantName ?cuisineType ?priceRange
 WHERE {
-  ?restaurant a schema:Restaurant ;
-              schema:name ?restaurantName ;
-              schema:servesCuisine ?cuisineType ;
-              schema:priceRange ?priceRange .
+  ?restaurant a ex:Restaurant ;
+              ex:hasName ?restaurantName ;
+              ex:hasCuisine ?cuisineType ;
+              ex:hasPriceRange ?priceRange .
+}
+```
+
+### 4. Récupérer les horaires d'ouverture des restaurants
+
+Cette requête récupère les noms des restaurants et leurs horaires d'ouverture pour chaque jour.
+
+```sparql
+PREFIX ex: <https://example.org/ontology#>
+
+SELECT ?restaurantName ?dayOfWeek ?opens ?closes
+WHERE {
+  ?restaurant a ex:Restaurant ;
+              ex:hasName ?restaurantName ;
+              ex:hasOpeningHours ?openingHours .
+  ?openingHours ex:dayOfWeek ?dayOfWeek ;
+                ex:opens ?opens ;
+                ex:closes ?closes .
 }
 ```

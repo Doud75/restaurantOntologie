@@ -10,77 +10,82 @@
     <rdfs:label>Restaurant</rdfs:label>
   </rdf:Description>
 
-  <!-- Classe AggregateRating -->
-  <rdf:Description rdf:about="https://schema.org/AggregateRating">
+  <!-- Classe Menu -->
+  <rdf:Description rdf:about="https://schema.org/Menu">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>AggregateRating</rdfs:label>
+    <rdfs:label>Menu</rdfs:label>
   </rdf:Description>
 
-  <!-- Classe PostalAddress -->
-  <rdf:Description rdf:about="https://schema.org/PostalAddress">
+  <!-- Classe MenuItem -->
+  <rdf:Description rdf:about="https://schema.org/MenuItem">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>PostalAddress</rdfs:label>
+    <rdfs:label>MenuItem</rdfs:label>
   </rdf:Description>
 
-  <!-- Classe OpeningHoursSpecification -->
-  <rdf:Description rdf:about="https://schema.org/OpeningHoursSpecification">
+  <!-- Classe Review -->
+  <rdf:Description rdf:about="https://schema.org/Review">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>OpeningHoursSpecification</rdfs:label>
+    <rdfs:label>Review</rdfs:label>
   </rdf:Description>
 
-  <!-- Propriété name -->
-  <rdf:Property rdf:about="https://schema.org/name">
+  <!-- Classe Location -->
+  <rdf:Description rdf:about="https://schema.org/Place">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Place</rdfs:label>
+  </rdf:Description>
+
+  <!-- Propriété menu -->
+  <rdf:Property rdf:about="https://schema.org/menu">
     <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:range rdf:resource="https://schema.org/Menu"/>
   </rdf:Property>
 
-  <!-- Propriété aggregateRating -->
-  <rdf:Property rdf:about="https://schema.org/aggregateRating">
-    <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
-    <rdfs:range rdf:resource="https://schema.org/AggregateRating"/>
+  <!-- Propriété menuItem -->
+  <rdf:Property rdf:about="https://schema.org/menuItem">
+    <rdfs:domain rdf:resource="https://schema.org/Menu"/>
+    <rdfs:range rdf:resource="https://schema.org/MenuItem"/>
   </rdf:Property>
 
-  <!-- Propriété address -->
-  <rdf:Property rdf:about="https://schema.org/address">
+  <!-- Propriété review -->
+  <rdf:Property rdf:about="https://schema.org/review">
     <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
-    <rdfs:range rdf:resource="https://schema.org/PostalAddress"/>
+    <rdfs:range rdf:resource="https://schema.org/Review"/>
   </rdf:Property>
 
-  <!-- Propriété telephone -->
-  <rdf:Property rdf:about="https://schema.org/telephone">
+  <!-- Propriété location -->
+  <rdf:Property rdf:about="https://schema.org/location">
     <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:range rdf:resource="https://schema.org/Place"/>
   </rdf:Property>
 
-  <!-- Propriété url -->
-  <rdf:Property rdf:about="https://schema.org/url">
-    <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
-  </rdf:Property>
-
-  <!-- Propriété openingHoursSpecification -->
-  <rdf:Property rdf:about="https://schema.org/openingHoursSpecification">
-    <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
-    <rdfs:range rdf:resource="https://schema.org/OpeningHoursSpecification"/>
-  </rdf:Property>
-
-  <!-- Propriété servesCuisine -->
-  <rdf:Property rdf:about="https://schema.org/servesCuisine">
-    <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </rdf:Property>
-
-  <!-- Propriété priceRange -->
-  <rdf:Property rdf:about="https://schema.org/priceRange">
-    <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </rdf:Property>
-
-  <!-- Propriété takesReservations -->
-  <rdf:Property rdf:about="https://schema.org/takesReservations">
+  <!-- Propriété offersDelivery -->
+  <rdf:Property rdf:about="https://schema.org/offersDelivery">
     <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
   </rdf:Property>
 
-</rdf:RDF>
+  <!-- Propriété offersTakeout -->
+  <rdf:Property rdf:about="https://schema.org/offersTakeout">
+    <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
 
+  <!-- Propriété dietaryRestriction -->
+  <rdf:Property rdf:about="https://schema.org/dietaryRestriction">
+    <rdfs:domain rdf:resource="https://schema.org/MenuItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <!-- Propriété calorieContent -->
+  <rdf:Property rdf:about="https://schema.org/calorieContent">
+    <rdfs:domain rdf:resource="https://schema.org/MenuItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <!-- Propriété paymentAccepted -->
+  <rdf:Property rdf:about="https://schema.org/paymentAccepted">
+    <rdfs:domain rdf:resource="https://schema.org/Restaurant"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+</rdf:RDF>

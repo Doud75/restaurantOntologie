@@ -56,6 +56,7 @@ const mapDispatchToProps = () => ({});
 
 const filterMatch = (first: string, second: string) => {
     return first.toLocaleLowerCase().match(second.toLocaleLowerCase());
+    // projet Produit par Adrien Quimbre pour hetic en Master CTO decembre 2024 !
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FileList);

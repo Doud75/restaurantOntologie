@@ -1,97 +1,99 @@
+@prefix : <http://www.example.org/restaurant-ontology#> .
 @prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # Restaurant 1
-<https://example.org/restaurant1> a schema:Restaurant ;
-    schema:name "Le Jardin Secret" ;
-    schema:aggregateRating [
-        a schema:AggregateRating ;
-        schema:ratingValue "4.6" ;
-        schema:reviewCount "180"
+<https://example.org/restaurant1> a :Restaurant ;
+    :hasName "Le Jardin Secret"^^xsd:string ;
+    :hasRating [
+        a :AggregateRating ;
+        :ratingValue "4.6"^^xsd:decimal ;
+        :reviewCount "180"^^xsd:integer
     ] ;
-    schema:address [
-        a schema:PostalAddress ;
-        schema:streetAddress "22 Rue des Fleurs" ;
-        schema:addressLocality "Lyon" ;
-        schema:addressRegion "Auvergne-Rhône-Alpes" ;
-        schema:postalCode "69001"
+    :hasAddress [
+        a :Address ;
+        :streetAddress "22 Rue des Fleurs"^^xsd:string ;
+        :addressLocality "Lyon"^^xsd:string ;
+        :addressRegion "Auvergne-Rhône-Alpes"^^xsd:string ;
+        :postalCode "69001"^^xsd:string
     ] ;
-    schema:telephone "+33 4 72 34 56 78" ;
-    schema:url <http://www.lejardinsecret.fr> ;
-    schema:openingHoursSpecification [
-        a schema:OpeningHoursSpecification ;
-        schema:dayOfWeek schema:Monday, schema:Tuesday, schema:Wednesday, schema:Thursday, schema:Friday ;
-        schema:opens "11:00" ;
-        schema:closes "23:00"
+    :hasPhone "+33 4 72 34 56 78"^^xsd:string ;
+    :hasWebsite <http://www.lejardinsecret.fr> ;
+    :hasOpeningHours [
+        a :OpeningHours ;
+        :dayOfWeek :Monday, :Tuesday, :Wednesday, :Thursday, :Friday ;
+        :opens "11:00"^^xsd:time ;
+        :closes "23:00"^^xsd:time
     ], [
-        a schema:OpeningHoursSpecification ;
-        schema:dayOfWeek schema:Saturday ;
-        schema:opens "12:00" ;
-        schema:closes "23:30"
+        a :OpeningHours ;
+        :dayOfWeek :Saturday ;
+        :opens "12:00"^^xsd:time ;
+        :closes "23:30"^^xsd:time
     ] ;
-    schema:servesCuisine "Française" ;
-    schema:priceRange "$$$" ;
-    schema:takesReservations "Yes" .
+    :servesCuisine "Française"^^xsd:string ;
+    :priceRange "$$$"^^xsd:string ;
+    :acceptsReservations true .
 
 # Restaurant 2
-<https://example.org/restaurant2> a schema:Restaurant ;
-    schema:name "La Pasta Rossa" ;
-    schema:aggregateRating [
-        a schema:AggregateRating ;
-        schema:ratingValue "4.2" ;
-        schema:reviewCount "220"
+<https://example.org/restaurant2> a :Restaurant ;
+    :hasName "La Pasta Rossa"^^xsd:string ;
+    :hasRating [
+        a :AggregateRating ;
+        :ratingValue "4.2"^^xsd:decimal ;
+        :reviewCount "220"^^xsd:integer
     ] ;
-    schema:address [
-        a schema:PostalAddress ;
-        schema:streetAddress "10 Via della Pasta" ;
-        schema:addressLocality "Rome" ;
-        schema:addressRegion "Lazio" ;
-        schema:postalCode "00100"
+    :hasAddress [
+        a :Address ;
+        :streetAddress "10 Via della Pasta"^^xsd:string ;
+        :addressLocality "Rome"^^xsd:string ;
+        :addressRegion "Lazio"^^xsd:string ;
+        :postalCode "00100"^^xsd:string
     ] ;
-    schema:telephone "+39 06 123 4567" ;
-    schema:url <http://www.lapastarossa.it> ;
-    schema:openingHoursSpecification [
-        a schema:OpeningHoursSpecification ;
-        schema:dayOfWeek schema:Monday, schema:Tuesday, schema:Wednesday, schema:Thursday, schema:Friday ;
-        schema:opens "12:00" ;
-        schema:closes "22:00"
+    :hasPhone "+39 06 123 4567"^^xsd:string ;
+    :hasWebsite <http://www.lapastarossa.it> ;
+    :hasOpeningHours [
+        a :OpeningHours ;
+        :dayOfWeek :Monday, :Tuesday, :Wednesday, :Thursday, :Friday ;
+        :opens "12:00"^^xsd:time ;
+        :closes "22:00"^^xsd:time
     ], [
-        a schema:OpeningHoursSpecification ;
-        schema:dayOfWeek schema:Saturday, schema:Sunday ;
-        schema:opens "12:30" ;
-        schema:closes "23:00"
+        a :OpeningHours ;
+        :dayOfWeek :Saturday, :Sunday ;
+        :opens "12:30"^^xsd:time ;
+        :closes "23:00"^^xsd:time
     ] ;
-    schema:servesCuisine "Italienne" ;
-    schema:priceRange "$$" ;
-    schema:takesReservations "Yes" .
+    :servesCuisine "Italienne"^^xsd:string ;
+    :priceRange "$$"^^xsd:string ;
+    :acceptsReservations true .
 
 # Restaurant 3
-<https://example.org/restaurant3> a schema:Restaurant ;
-    schema:name "Sushi World" ;
-    schema:aggregateRating [
-        a schema:AggregateRating ;
-        schema:ratingValue "4.9" ;
-        schema:reviewCount "150"
+<https://example.org/restaurant3> a :Restaurant ;
+    :hasName "Sushi World"^^xsd:string ;
+    :hasRating [
+        a :AggregateRating ;
+        :ratingValue "4.9"^^xsd:decimal ;
+        :reviewCount "150"^^xsd:integer
     ] ;
-    schema:address [
-        a schema:PostalAddress ;
-        schema:streetAddress "44 Ocean Drive" ;
-        schema:addressLocality "Miami Beach" ;
-        schema:addressRegion "Florida" ;
-        schema:postalCode "33139"
+    :hasAddress [
+        a :Address ;
+        :streetAddress "44 Ocean Drive"^^xsd:string ;
+        :addressLocality "Miami Beach"^^xsd:string ;
+        :addressRegion "Florida"^^xsd:string ;
+        :postalCode "33139"^^xsd:string
     ] ;
-    schema:telephone "+1 305-555-9876" ;
-    schema:url <http://www.sushiworld.com> ;
-    schema:openingHoursSpecification [
-        a schema:OpeningHoursSpecification ;
-        schema:dayOfWeek schema:Monday, schema:Tuesday, schema:Wednesday, schema:Thursday, schema:Friday, schema:Saturday ;
-        schema:opens "11:00" ;
-        schema:closes "22:30"
+    :hasPhone "+1 305-555-9876"^^xsd:string ;
+    :hasWebsite <http://www.sushiworld.com> ;
+    :hasOpeningHours [
+        a :OpeningHours ;
+        :dayOfWeek :Monday, :Tuesday, :Wednesday, :Thursday, :Friday, :Saturday ;
+        :opens "11:00"^^xsd:time ;
+        :closes "22:30"^^xsd:time
     ], [
-        a schema:OpeningHoursSpecification ;
-        schema:dayOfWeek schema:Sunday ;
-        schema:opens "12:00" ;
-        schema:closes "22:00"
+        a :OpeningHours ;
+        :dayOfWeek :Sunday ;
+        :opens "12:00"^^xsd:time ;
+        :closes "22:00"^^xsd:time
     ] ;
-    schema:servesCuisine "Japonais" ;
-    schema:priceRange "$$$" ;
-    schema:takesReservations "Yes" .
+    :servesCuisine "Japonais"^^xsd:string ;
+    :priceRange "$$$"^^xsd:string ;
+    :acceptsReservations true .
